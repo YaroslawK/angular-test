@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { last } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -14,7 +13,7 @@ import { last } from 'rxjs';
       <section class="listing-description"><h2 class="listing-heading">{{housingLocation?.name}}</h2>
       <p class="listing-location">{{housingLocation?.city}},{{housingLocation?.state}}</p></section>
       <section class="listing-features">
-        <h2 class="leasting-heading">About this housing location</h2>
+        <h2 class="listing-heading">About this housing location</h2>
         <ul>
           <li>Units available:{{housingLocation?.availableUnits}}</li>
           <li>Does this location have wifi: {{housingLocation?.wifi}}</li>
@@ -50,7 +49,9 @@ export class DetailsComponent {
   housingService = inject(HousingService);
   constructor() {
     const housingLocationId = Number(this.route.snapshot.params['id']);
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).then(housingLocation => {
+      this.housingLocation = housingLocation;
+    });
   }
   submitApplication() {
     this.housingService.submitApplication(
