@@ -19,7 +19,7 @@ import { RouterModule } from "@angular/router";
       <a [routerLink]='["/details", housingLocation.id]'>Learn more</a>
     </section>
   `,
-  styleUrls: ["./housing-location.component.css"], // Правильне підключення зовнішнього CSS-файлу
+  styleUrls: ["./housing-location.component.css"],
 })
 export class HousingLocationComponent {
   @Input() housingLocation!: HousingLocation;
