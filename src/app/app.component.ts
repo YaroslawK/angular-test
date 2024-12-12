@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   template: ` <main>
       <header>
+        <a href="/">
         <img
           class="brand-logo"
           src="./assets/logo.svg"
           alt="logo"
           aria-hidden="true"
         />
+        </a>
       </header>
       <section class="content">
 
